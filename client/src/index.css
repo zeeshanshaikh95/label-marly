@@ -1,0 +1,127 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  body {
+    @apply bg-cream text-ink font-body antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-brand-500 ring-offset-2 ring-offset-cream;
+  }
+
+  ::selection {
+    @apply bg-brand-200 text-brand-950;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-none px-7 py-3.5 text-[11px] font-semibold uppercase tracking-[0.18em] transition-all duration-200 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .btn-primary {
+    @apply btn bg-ink text-cream hover:bg-brand-600 hover:text-ink active:scale-[0.99];
+  }
+
+  .btn-outline {
+    @apply btn border border-ink/30 text-ink hover:border-brand-600 hover:bg-brand-50 active:scale-[0.99];
+  }
+
+  .btn-ghost {
+    @apply btn text-ink hover:bg-brand-50;
+  }
+
+  .btn-whatsapp {
+    @apply btn bg-ink text-cream hover:bg-brand-700 hover:text-ink active:scale-[0.99];
+  }
+
+  .input {
+    @apply w-full rounded-none border border-brand-200 bg-white px-4 py-3 text-sm text-ink placeholder:text-ink-soft/60 focus:border-brand-500 focus:outline-none focus:ring-1 focus:ring-brand-400;
+  }
+
+  .label {
+    @apply mb-1.5 block text-[11px] font-semibold uppercase tracking-[0.16em] text-ink-soft;
+  }
+
+  .card {
+    @apply rounded-none border border-brand-100 bg-white shadow-card;
+  }
+
+  .section-title {
+    @apply font-display text-4xl font-medium leading-[1.05] text-ink sm:text-5xl;
+  }
+
+  .eyebrow {
+    @apply text-[11px] font-semibold uppercase tracking-[0.32em] text-brand-600;
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-1 rounded-none px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.16em];
+  }
+
+  .badge-pink {
+    @apply badge bg-brand-100 text-brand-800;
+  }
+
+  .badge-leaf {
+    @apply badge bg-ink text-cream;
+  }
+
+  .badge-stone {
+    @apply badge bg-stone-100 text-stone-600;
+  }
+
+  .skeleton {
+    @apply animate-pulse rounded-none bg-brand-100/70;
+  }
+}
+
+@layer utilities {
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: theme('colors.brand.200') transparent;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .marquee-track {
+    animation: marquee 28s linear infinite;
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
